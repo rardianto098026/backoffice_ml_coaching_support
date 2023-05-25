@@ -1,0 +1,33 @@
+﻿@page
+@model ML_Coaching_Support.Pages.User.AddUserModel
+<h2>Create User</h2>
+
+<form method="post">
+    <div>
+        <label asp-for="User.Username">Username:</label>
+        <input asp-for="User.Username" class="form-control" required />
+        <span asp-validation-for="User.Username" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="User.Password">Password:</label>
+        <input asp-for="User.Password" type="password" class="form-control" required />
+        <span asp-validation-for="User.Password" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="User.Email">Email:</label>
+        <input asp-for="User.Email" type="email" class="form-control" required />
+        <span asp-validation-for="User.Email" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="User.Role">Role:</label>
+        <select asp-for="User.Role" asp-items="Model.User.AvailableRoles" class="form-control"></select>
+        <span asp-validation-for="User.Role" class="text-danger"></span>
+    </div>
+    <button type="submit">Create</button>
+</form>
+@if (ViewData.ContainsKey("ErrorMessageScript"))
+{
+    <script>
+        @Html.Raw(ViewData["ErrorMessageScript"])
+    </script>
+}

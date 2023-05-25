@@ -1,0 +1,33 @@
+﻿@page
+@model ListUserModel
+
+<table>
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Created By</th>
+            <th>Created Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+                <tr>
+                    <td>@user.Username</td>
+                    <td>@user.Email</td>
+                    <td>@user.RoleID</td>
+                    <td>@user.CreatedBy</td>
+                    <td>@user.CreatedDate</td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = user.UserID })">Detail</a>
+                        <form method="post" action="/User/ListUser/DeleteUser/@user.UserID">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ML Coaching Support.props" />
+</Project>
